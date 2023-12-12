@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  PusherClient pusher;
-  Channel channel;
+  late PusherClient pusher;
+  late Channel channel;
 
   @override
   void initState() {
@@ -41,19 +41,19 @@ class _MyAppState extends State<MyApp> {
     channel = pusher.subscribe("private-orders");
 
     pusher.onConnectionStateChange((state) {
-      log("previousState: ${state.previousState}, currentState: ${state.currentState}");
+      log("previousState: ${state?.previousState}, currentState: ${state?.currentState}");
     });
 
     pusher.onConnectionError((error) {
-      log("error: ${error.message}");
+      log("error: ${error?.message}");
     });
 
     channel.bind('status-update', (event) {
-      log(event.data);
+      log(event?.data?.toString() ?? '');
     });
 
     channel.bind('order-filled', (event) {
-      log("Order Filled Event" + event.data.toString());
+      log("Order Filled Event" + (event?.data.toString() ?? ''));
     });
   }
 
@@ -90,8 +90,8 @@ class _MyAppState extends State<MyApp> {
             ElevatedButton(
               child: Text('Bind Status Update'),
               onPressed: () {
-                channel.bind('status-update', (PusherEvent event) {
-                  log("Status Update Event" + event.data.toString());
+                channel.bind('status-update', (PusherEvent? event) {
+                  log("Status Update Event" + (event?.data?.toString() ?? ''));
                 });
               },
             ),

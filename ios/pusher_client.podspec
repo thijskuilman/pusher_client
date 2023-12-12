@@ -19,7 +19,7 @@ A pusher client plugin that works.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'PusherSwift', '~> 13.0'
+  s.dependency 'PusherSwift', '~> 10.1.0'
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
