@@ -2,7 +2,7 @@ group 'com.github.chinloyal.pusher_client'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '2.0.20'
     repositories {
         google()
         jcenter()
@@ -25,13 +25,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
     }
     lintOptions {
         disable 'InvalidPackage'
