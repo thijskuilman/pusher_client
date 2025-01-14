@@ -9,7 +9,8 @@ void main() {
       const MethodChannel('com.github.chinloyal/pusher_client');
   group('PusherClient Test | ', () {
     setUp(() {
-      channel.setMockMethodCallHandler((call) {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, (call) async {
         switch (call.method) {
           case 'init':
             return null;
